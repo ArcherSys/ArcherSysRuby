@@ -1,5 +1,5 @@
 <?php
-namespace ArcherSys/Ruby/Data;
+namespace ArcherSys\Ruby\Data;
  class DataMod{
      static function openDatabase($dbname){
         mysql_select_db($dbname);
