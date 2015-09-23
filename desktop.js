@@ -6,7 +6,7 @@ $(window).load(function() {
     columnWidth: 128
   });
   
-  /*$container.sortable({
+  $container.sortable({
     items: '.start-screen__tile',
     start: function(e, ui) {
       ui.item.removeClass('masonry-item');
@@ -24,7 +24,7 @@ $(window).load(function() {
       console.log('stop drag');
     }
   });
-  $container.disableSelection();*/
+  $container.disableSelection();
   
   
   $('.start-menu').hide().css('opacity', 1);
@@ -339,7 +339,7 @@ $(document).on('click', '.list__toggle',  function() {
 
 
 
-function toggleStart(e) {
+function toggleStart() {
   $('.start-menu-fade').fadeToggle(500);
   $('.start-menu').fadeToggle(250).toggleClass('start-menu--open');
   $('.taskbar__item--start').toggleClass('start--open');
@@ -375,35 +375,33 @@ $(document).mouseup(function(e) {
 
 // Current time
 $(function() {
-  var a_p = "";
-  var d = new Date();
+    setTimeout(function(){
+    var a_p = "";
+    var d = new Date();
 
-  var curr_hour = d.getHours();
+    var curr_hour = d.getHours();
 
-  if (curr_hour < 12)
-     {
-     a_p = "AM";
-     }
-  else
-     {
-     a_p = "PM";
-     }
-  if (curr_hour == 0)
-     {
-     curr_hour = 12;
-     }
-  if (curr_hour > 12)
-     {
-     curr_hour = curr_hour - 12;
-     }
+    if (curr_hour < 12) {
+        a_p = "AM";
+    }
+    else {
+        a_p = "PM";
+    }
+    if (curr_hour == 0) {
+        curr_hour = 12;
+    }
+    if (curr_hour > 12) {
+        curr_hour = curr_hour - 12;
+    }
 
-  var curr_min = d.getMinutes();
-  
-  if ( curr_min < 10 ) {
-    curr_min = '0' + curr_min;
-  }
+    var curr_min = d.getMinutes();
 
-  $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
+    if (curr_min < 10) {
+        curr_min = '0' + curr_min;
+    }
+
+    $('.time').html(curr_hour + ':' + curr_min + ' ' + a_p);
+},1000);
 });
 
 

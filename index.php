@@ -9,7 +9,14 @@
 <script src="jquery.js"></script>
 <script src="masonry.js"></script>
 <script src="desktop.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="jquery.jscrollpane.js">
+    
+</script>
+<link rel="stylesheet" href="jquery.jscrollpane.min.css">
+
 </head>
 <body>
 <div id="main">
@@ -137,7 +144,7 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
   </div>
   
   <div class="taskbar">
-    <a class="taskbar__item taskbar__item--start" href="#" data-window="start">
+    <a class="taskbar__item taskbar__item--start" id="start" href="#" data-window="start">
       <i class="fa fa-windows"></i>
     </a>
     <a class="taskbar__item taskbar__item--explorer" href="#" data-window="explorer">
