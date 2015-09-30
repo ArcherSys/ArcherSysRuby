@@ -1,6 +1,7 @@
 <?php
 namespace ArcherSys\Ruby\Data;
  class DataMod{
+ 
      static function openDatabase($dbname){
         mysql_select_db($dbname);
     }
@@ -11,8 +12,11 @@ namespace ArcherSys\Ruby\Data;
         mysql_query($query);
     }
      static function createTable($table, $query){
-        DataMod::query("CREATE TABLE ".$table." (".$query.")");
+        DataMod::query("CREATE TABLE ${table} (${query})");
     }
-    
-}
+	 static function createDatabase($db){
+        DataMod::query("CREATE DATABASE ${db}");
+    }
+    }
+	
 ?>

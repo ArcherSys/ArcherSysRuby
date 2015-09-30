@@ -4,18 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User Management System (Tom Cameron for NetTuts)</title>
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link rel="stylesheet"  href="desktop.css"/>
-<script src="jquery.js"></script>
-<script src="masonry.js"></script>
-<script src="desktop.js"></script>
+<link rel="stylesheet" href="/core/css/style.css" type="text/css" />
+<link rel="stylesheet"  href="/core/css/desktop.css"/>
+<script src="/core/js/jquery/jquery.js"></script>
+<script src="/core/js/jquery/plugins/masonry.js"></script>
+<script src="/core/js/desktop.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<script src="jquery.jscrollpane.js">
+<script src="/core/js/jquery/plugins/jquery.jscrollpane.js">
     
 </script>
-<link rel="stylesheet" href="jquery.jscrollpane.min.css">
+<link rel="stylesheet" href="/core/css/jquery/plugins/jquery.jscrollpane.min.css">
 
 </head>
 <body>
@@ -150,6 +150,9 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
     <a class="taskbar__item taskbar__item--explorer" href="#" data-window="explorer">
       <i class="fa fa-folder"></i>
     </a>
+ <a class="taskbar__item taskbar__item--gw" href="#" data-window="gw">
+      <i class="fa fa-folder"></i>
+    </a>
     <a class="taskbar__item taskbar__item--mail" href="#" data-window="mail">
       <i class="fa fa-envelope"></i>
     </a>
@@ -253,9 +256,17 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
             <ul style="display:none">
               <li><a href="#">Desktop</a>
                 <ul style="display:none">
+<?php
+            foreach(ftp_nlist($conn,'.') as $fileitem){
+               if(is_dir($fileitem)){
+           ?>
                   <li>
-                    <a href="#">Folder 1</a>
+                    <a href="#"><?php echo $fileitem; ?></a>
                   </li>
+<?php
+ }
+}
+         ?>
                 </ul>
               </li>
               <li><a href="#">Documents</a></li>
@@ -291,6 +302,61 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
     </div>
     
   </div>
+      <div class="window window--gw" data-window="gw" style="display:none;width:400px;height:300px;top:40%;left:40%;">
+    <div class="window__titlebar">
+      <div class="window__controls window__controls--left">
+        <a class="window__icon" href="#"><i class="fa fa-envelope"></i></a>
+        <a class="window__menutoggle" href="#"><i class="fa fa-bars"></i></a>
+      </div>
+      
+      
+      
+      <span class="window__title">
+        Ensoora Groupware
+      </span>
+      
+      <div class="window__controls window__controls--right">
+        <a class="window__minimize" href="#"><i class="fa fa-minus"></i></a>
+        <a class="window__maximize" href="#"><i class="fa"></i></a>
+        <a class="window__close" href="#"><i class="fa fa-close"></i></a>
+      </div>
+    </div>
+    
+    <ul class="window__menu">
+        <li>
+          <a href="#">
+            <i class="menu__icon fa fa-search"></i>
+            Search
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="menu__icon fa fa-share-alt"></i>
+            Share
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="menu__icon fa fa-plug"></i>
+            Devices
+          </a>
+        </li>
+        <li class="divided">
+          <a href="#">
+            <i class="menu__icon fa fa-cog"></i>
+            Settings
+          </a>
+        </li>
+      </ul>
+    
+    <div class="window__body">
+      <div class="window__side">
+        
+      </div>
+      <div class="window__main">
+        <iframe width="100%" height="800" src="/osutil/WebDAV/groupware.php"></iframe>
+      </div>
+    </div>
     
      <div class="window window--mail" data-window="mail" style="display:none;width:400px;height:300px;top:40%;left:40%;">
     <div class="window__titlebar">
@@ -302,7 +368,7 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
       
       
       <span class="window__title">
-        Mail
+      Mail
       </span>
       
       <div class="window__controls window__controls--right">

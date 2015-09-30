@@ -1,0 +1,16 @@
+{
+    "name": "archersys/archersysosruby",
+    "description": "The Next Best OS for ArcherSys OS",
+    "type": "web server operating system",
+    "require": {
+        "sabre/dav": "^3.1@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Weldon Henson",
+            "email": "acosf2014.pdflint@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
