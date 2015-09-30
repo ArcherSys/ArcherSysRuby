@@ -265,90 +265,27 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username']))
       </div>
       <div class="window__main">
         <div class="folders">
+            <?php
+            foreach(ftp_nlist($conn,'.') as $fileitem){
+               if(is_dir($fileitem)){
+           ?>
           <a href="#">
             <i class="fa fa-folder"></i>
-            <span>Folder 1</span>
+            <span><?php echo $fileitem; ?></span>
           </a>
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Folder 2</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Folder 3</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Folder 4</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Folder 5</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Folder 6</span>
-          </a>
+         <?php
+         }else{
+             
+         }
+         ?>
           <a href="#">
             <i class="fa fa-file"></i>
-            <span>File</span>
+            <span><?php echo $fileitem; ?></span>
           </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
-          <a href="#">
-            <i class="fa fa-file"></i>
-            <span>File</span>
-          </a>
+          
+          <?php
+            }
+            ?>
         </div>
       </div>
     </div>
